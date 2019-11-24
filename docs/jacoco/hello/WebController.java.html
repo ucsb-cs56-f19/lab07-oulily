@@ -39,24 +39,36 @@ import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 <span class="nc" id="L39">        return &quot;login&quot;;</span>
     }
 
+    @GetMapping(&quot;/page1&quot;)
+    public String getPage1(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+
+<span class="nc" id="L45">    return &quot;page1&quot;;</span>
+    }
+
+    @GetMapping(&quot;/page2&quot;)
+    public String getPage2(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+
+<span class="nc" id="L51">    return &quot;page2&quot;;</span>
+  }
+
     @GetMapping(&quot;/earthquakes/search&quot;)
     public String getEarthquakesSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
            EqSearch eqSearch) {
-<span class="fc" id="L45">       return &quot;earthquakes/search&quot;;</span>
+<span class="fc" id="L57">       return &quot;earthquakes/search&quot;;</span>
    }
    @GetMapping(&quot;/earthquakes/results&quot;)
     public String getEarthquakesResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             EqSearch eqSearch) {
-<span class="nc" id="L50">        EarthquakeQueryService e = new EarthquakeQueryService();</span>
+<span class="nc" id="L62">        EarthquakeQueryService e = new EarthquakeQueryService();</span>
 
-<span class="nc" id="L52">        model.addAttribute(&quot;eqSearch&quot;, eqSearch);</span>
+<span class="nc" id="L64">        model.addAttribute(&quot;eqSearch&quot;, eqSearch);</span>
 
-<span class="nc" id="L54">        String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag());</span>
-<span class="nc" id="L55">        model.addAttribute(&quot;json&quot;, json);</span>
-<span class="nc" id="L56">        FeatureCollection featureCollection = FeatureCollection.fromJSON(json);</span>
-<span class="nc" id="L57">        model.addAttribute(&quot;featureCollection&quot;,featureCollection);</span>
+<span class="nc" id="L66">        String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag());</span>
+<span class="nc" id="L67">        model.addAttribute(&quot;json&quot;, json);</span>
+<span class="nc" id="L68">        FeatureCollection featureCollection = FeatureCollection.fromJSON(json);</span>
+<span class="nc" id="L69">        model.addAttribute(&quot;featureCollection&quot;,featureCollection);</span>
 
-<span class="nc" id="L59">        return &quot;earthquakes/results&quot;;</span>
+<span class="nc" id="L71">        return &quot;earthquakes/results&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
